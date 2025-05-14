@@ -186,7 +186,7 @@ impl WrappedLine {
 }
 
 fn paint_line(
-    origin: Point<Pixels>,
+    mut origin: Point<Pixels>,
     layout: &LineLayout,
     line_height: Pixels,
     align: TextAlign,
@@ -196,6 +196,7 @@ fn paint_line(
     window: &mut Window,
     cx: &mut App,
 ) -> Result<()> {
+    origin.x = origin.x.round();
     let line_bounds = Bounds::new(
         origin,
         size(
